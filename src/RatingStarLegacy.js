@@ -16,9 +16,8 @@ export default class RatingStarLegacy extends Component {
     };
   }
 
-  setSelectedStar = (selectedStar) => {
-    this.setState({ selectedStar });
-    //this.setState((state,props) => newState)
+  setSelectedStar = (selectedStar2) => {
+    this.setState({ selectedStar: selectedStar2 });
   };
 
   render() {
@@ -30,13 +29,13 @@ export default class RatingStarLegacy extends Component {
           {stars.map((_, i) => (
             <li key={i}>
               <Star
-                selected={i < selectedStar}
-                onSelected={() => setSelectedStar(i + 1)}
+                selected={i < this.state.selectedStar}
+                onSelected={() => this.setSelectedStar(i + 1)}
               />
             </li>
           ))}
         </ul>
-        {selectedStar} of {totalStars}
+        {this.state.selectedStar} of {totalStars}
       </>
     );
   }
